@@ -2,5 +2,6 @@ import 'package:flutter/material.dart';
 
 class AppColor {
   static const elementColor = Colors.blueAccent;
-  static const backgroundColor = Colors.white;
+  static const elementBgColor = Colors.white;
+  static const backgroundColor = Color(0xFFE8F0F2);
 }

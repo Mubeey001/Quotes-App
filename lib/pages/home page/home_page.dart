@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:quote_app/controller/home_controller.dart';
 import 'package:quote_app/util/constants/color.dart';
-import 'package:quote_app/widgets/custom_app_bar.dart';
+import 'package:quote_app/util/widgets/custom_app_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HomePage extends StatelessWidget {
