@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:quote_app/dio%20services/dio_quote_fetch.dart';
+import 'package:quote_app/backend%20services/dio_quote_fetch.dart';
 import 'package:logger/logger.dart';
 
 class HomeController extends GetxController {

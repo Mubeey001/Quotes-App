@@ -13,6 +13,7 @@ class RegistrationPage extends StatelessWidget {
   RegistrationPage({super.key});
   final RegistrationController registrationController =
       Get.put(RegistrationController());
+  final GlobalKey<FormState> _formKey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
@@ -27,64 +28,81 @@ class RegistrationPage extends StatelessWidget {
                   child: Padding(
                       padding: const EdgeInsets.all(10.0),
                       child: Form(
+                          autovalidateMode: AutovalidateMode.always,
+                          key: _formKey,
                           child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const CustomText(text: "Full name"),
-                          FormFieldWidget(
-                            text: 'Full name',
-                            fieldIcon: const Icon(Icons.person),
-                            controller: registrationController.emailController,
-                            validate: (value) =>
-                                AppValidator.validateEmptyText(value),
-                          ),
-                          const SizedBox(height: 5),
-                          const CustomText(text: "Username"),
-                          FormFieldWidget(
-                            text: 'Username',
-                            fieldIcon: const Icon(Icons.person_4_rounded),
-                            controller: registrationController.emailController,
-                            validate: (value) =>
-                                AppValidator.validateEmptyText(value),
-                          ),
-                          const SizedBox(height: 5),
-                          const CustomText(text: "Email"),
-                          FormFieldWidget(
-                            text: 'Email',
-                            fieldIcon: const Icon(Icons.email),
-                            controller: registrationController.emailController,
-                            validate: (value) => AppValidator.validEmail(value),
-                          ),
-                          const SizedBox(height: 5),
-                          const CustomText(text: "Password"),
-                          FormFieldWidget(
-                            text: 'Password',
-                            fieldIcon: const Icon(Icons.lock),
-                            controller: registrationController.emailController,
-                            validate: (value) =>
-                                AppValidator.validatePassword(value),
-                          ),
-                          const SizedBox(height: 24),
-                          Center(
-                            child: AppButton(
-                              text: "Register",
-                              size: 18,
-                              onPressed: () {},
-                            ),
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              LoginRegisterButton(
-                                text: "Login",
-                                size: 15,
-                                onPressed: () =>
-                                    Get.offAllNamed(Routes.loginPageRoute),
+                              const CustomText(text: "Full name"),
+                              FormFieldWidget(
+                                text: 'Full name',
+                                fieldIcon: const Icon(Icons.person),
+                                controller:
+                                    registrationController.fullnameController,
+                                validate: (value) =>
+                                    AppValidator.validateEmptyText(value),
                               ),
+                              const SizedBox(height: 5),
+                              const CustomText(text: "Username"),
+                              FormFieldWidget(
+                                text: 'Username',
+                                fieldIcon: const Icon(Icons.person_4_rounded),
+                                controller:
+                                    registrationController.usernameController,
+                                validate: (value) =>
+                                    AppValidator.validateEmptyText(value),
+                              ),
+                              const SizedBox(height: 5),
+                              const CustomText(text: "Email"),
+                              FormFieldWidget(
+                                text: 'Email',
+                                fieldIcon: const Icon(Icons.email),
+                                controller:
+                                    registrationController.emailController,
+                                validate: (value) =>
+                                    AppValidator.validEmail(value),
+                              ),
+                              const SizedBox(height: 5),
+                              const CustomText(text: "Password"),
+                              FormFieldWidget(
+                                text: 'Password',
+                                fieldIcon: const Icon(Icons.lock),
+                                controller:
+                                    registrationController.passwordController,
+                                validate: (value) =>
+                                    AppValidator.validatePassword(value),
+                              ),
+                              const SizedBox(height: 24),
+                              Obx(() {
+                                return registrationController.isLoading.value
+                                    ? const Center(
+                                        child: CircularProgressIndicator())
+                                    : Center(
+                                        child: AppButton(
+                                          text: "Register",
+                                          size: 18,
+                                          onPressed: () {
+                                            if (_formKey.currentState!
+                                                .validate()) {
+                                              registrationController.register();
+                                            }
+                                          },
+                                        ),
+                                      );
+                              }),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  LoginRegisterButton(
+                                    text: "Login",
+                                    size: 15,
+                                    onPressed: () =>
+                                        Get.offAllNamed(Routes.loginPageRoute),
+                                  ),
+                                ],
+                              )
                             ],
-                          )
-                        ],
-                      )))),
+                          )))),
             ),
           ),
         ],

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "734783962938",
+    "project_id": "quoteapp-60708",
+    "storage_bucket": "quoteapp-60708.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:734783962938:android:99a1c5559171949a7a9a03",
+        "android_client_info": {
+          "package_name": "com.example.quote_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAljbJtcBwm8hTL5cYB6QhK-aiyf68yoe8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
