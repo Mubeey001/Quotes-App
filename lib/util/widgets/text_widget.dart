@@ -6,11 +6,15 @@ class CustomText extends StatelessWidget {
   final String text;
   final double size;
   final Color color;
+  final TextOverflow? overflow;
+  final int? max;
   const CustomText({
     super.key,
     required this.text,
     this.size = 15.0,
     this.color = AppColor.elementColor,
+    this.overflow,
+    this.max,
   });
 
   @override
@@ -21,7 +25,12 @@ class CustomText extends StatelessWidget {
           padding: const EdgeInsets.only(left: 8.0),
           child: Text(
             text,
-            style: GoogleFonts.robotoCondensed(fontSize: size, color: color),
+            style: GoogleFonts.robotoCondensed(
+              fontSize: size,
+              color: color,
+            ),
+            overflow: overflow,
+            maxLines: max,
           ),
         ),
       ],

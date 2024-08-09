@@ -13,9 +13,7 @@ class LoginController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    // Check if the user is already logged in
     if (loginAuth.currentUser != null) {
-      // If logged in, redirect to home page
       Get.offAllNamed(Routes.homePageRoute);
     }
   }
@@ -27,7 +25,7 @@ class LoginController extends GetxController {
         emailController.text,
         passwordController.text,
       );
-      Get.snackbar('Success', 'Login successful');
+      Get.snackbar('Success', 'Login successful', snackPosition: SnackPosition.BOTTOM);
       Get.offAllNamed(Routes.homePageRoute);
     } catch (e) {
       Get.snackbar('Error', e.toString(), snackPosition: SnackPosition.BOTTOM);
@@ -36,12 +34,5 @@ class LoginController extends GetxController {
     }
   }
 
-  Future<void> logout() async {
-    try {
-      await loginAuth.logout();
-      Get.offAllNamed(Routes.loginPageRoute);
-    } catch (e) {
-      Get.snackbar('Error', e.toString(), snackPosition: SnackPosition.BOTTOM);
-    }
-  }
+  
 }

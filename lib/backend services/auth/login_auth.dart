@@ -24,13 +24,6 @@ class LoginAuth {
     }
   }
 
-  Future<void> logout() async {
-    try {
-      await _firebaseAuth.signOut();
-    } catch (e) {
-      throw 'Failed to logout: $e';
-    }
-  }
 
   User? get currentUser => _firebaseAuth.currentUser;
 }

@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:quote_app/routes/routes.dart';
 import 'package:quote_app/util/constants/color.dart';
 
 class CustomAppBarWidget extends StatelessWidget {
-  final Icon profile;
-  final void Function() onPressed;
-  final Function(String) onChanged;
   final TextEditingController textEditingController;
+  final Function(String) onChanged;
+
   const CustomAppBarWidget({
     super.key,
-    required this.profile,
-    required this.onPressed,
     required this.textEditingController,
     required this.onChanged,
   });
@@ -54,12 +53,12 @@ class CustomAppBarWidget extends StatelessWidget {
                 ),
                 const SizedBox(width: 10),
                 IconButton(
-                  icon: CircleAvatar(
+                  icon: const CircleAvatar(
                     backgroundColor: AppColor.backgroundColor,
                     radius: 18,
-                    child: profile,
+                    child: Icon(Icons.account_circle_outlined),
                   ),
-                  onPressed: onPressed,
+                  onPressed: () => Get.toNamed(Routes.profilePageRoute),
                 ),
               ],
             ),

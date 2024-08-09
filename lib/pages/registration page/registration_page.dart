@@ -24,7 +24,7 @@ class RegistrationPage extends StatelessWidget {
           Center(
             child: SingleChildScrollView(
               padding: const EdgeInsets.symmetric(horizontal: 25.0),
-              child: CardForm(
+              child: CardWidget(
                   child: Padding(
                       padding: const EdgeInsets.all(10.0),
                       child: Form(

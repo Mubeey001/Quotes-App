@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:quote_app/util/constants/color.dart';
 
-class CardForm extends StatelessWidget {
+class CardWidget extends StatelessWidget {
   final Widget child;
-  const CardForm({super.key, required this.child});
+  final Color color;
+  const CardWidget({
+    super.key,
+    required this.child,
+    this.color = AppColor.elementBgColor,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: AppColor.elementBgColor,
+      color: color,
       shape: RoundedRectangleBorder(
         side: const BorderSide(color: AppColor.elementColor, width: 2),
         borderRadius: BorderRadius.circular(15.0),
