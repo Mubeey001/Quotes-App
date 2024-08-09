@@ -23,12 +23,13 @@ class RegistrationController extends GetxController {
         passwordController.text,
       );
 
-      Get.snackbar('Success', 'Registration successful');
+      Get.snackbar('Success', 'Registration successful',
+          snackPosition: SnackPosition.BOTTOM);
 
       Get.offAllNamed(Routes.homePageRoute);
     } catch (e) {
       errorMessage.value = e.toString();
-      Get.snackbar('Error', e.toString());
+      Get.snackbar('Error', e.toString(), snackPosition: SnackPosition.BOTTOM);
     } finally {
       isLoading.value = false;
     }

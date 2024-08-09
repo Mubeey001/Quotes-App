@@ -19,8 +19,6 @@ class HomePage extends StatelessWidget {
           CustomAppBarWidget(
             textEditingController: searchQuote,
             onChanged: (value) => homeController.filterQuotes(value),
-            profile: const Icon(Icons.person_3_sharp),
-            onPressed: () {},
           ),
           Expanded(
             child: Obx(

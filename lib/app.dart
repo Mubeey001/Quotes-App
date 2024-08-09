@@ -43,11 +43,12 @@ class MyApp extends StatelessWidget {
         ),
         GetPage(
           name: Routes.profilePageRoute,
-          page: () => const ProfilePage(),
+          page: () => ProfilePage(),
         ),
       ],
       debugShowCheckedModeBanner: false,
       title: "Quotes App",
+    
       home: loginAuth.currentUser != null ? HomePage() : LoginPage(),
     );
   }
