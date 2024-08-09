@@ -50,7 +50,9 @@ class LoginPage extends StatelessWidget {
                           Obx(() {
                             return loginController.isLoading.value
                                 ? const Center(
-                                    child: CircularProgressIndicator())
+                                    child: CircularProgressIndicator(
+                                    color: AppColor.elementColor,
+                                  ))
                                 : Center(
                                     child: AppButton(
                                       text: "Login",

@@ -7,6 +7,8 @@ class CustomText extends StatelessWidget {
   final double size;
   final Color color;
   final TextOverflow? overflow;
+  final FontWeight? fontWeight;
+  final TextAlign? textAlign;
   final int? max;
   const CustomText({
     super.key,
@@ -14,7 +16,9 @@ class CustomText extends StatelessWidget {
     this.size = 15.0,
     this.color = AppColor.elementColor,
     this.overflow,
+    this.fontWeight,
     this.max,
+    this.textAlign,
   });
 
   @override
@@ -26,11 +30,10 @@ class CustomText extends StatelessWidget {
           child: Text(
             text,
             style: GoogleFonts.robotoCondensed(
-              fontSize: size,
-              color: color,
-            ),
+                fontSize: size, color: color, fontWeight: fontWeight),
             overflow: overflow,
             maxLines: max,
+            textAlign: textAlign,
           ),
         ),
       ],
