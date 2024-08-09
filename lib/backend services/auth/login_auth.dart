@@ -23,7 +23,5 @@ class LoginAuth {
       throw 'An unexpected error occurred. Please try again.';
     }
   }
-
-
   User? get currentUser => _firebaseAuth.currentUser;
 }

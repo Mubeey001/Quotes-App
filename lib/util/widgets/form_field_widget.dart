@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:quote_app/util/constants/color.dart';
 
 class FormFieldWidget extends StatelessWidget {
   final String text;

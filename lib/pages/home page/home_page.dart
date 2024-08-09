@@ -14,67 +14,62 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColor.backgroundColor,
-      body: Column(
-        children: [
-          CustomAppBarWidget(
-            textEditingController: searchQuote,
-            onChanged: (value) => homeController.filterQuotes(value),
-          ),
-          Expanded(
-            child: Obx(
-              () {
-                if (homeController.isLoading.value) {
-                  return const Center(
-                    child: CircularProgressIndicator(
-                      color: AppColor.elementColor,
+      body: Column(children: [
+        CustomAppBarWidget(
+          textEditingController: searchQuote,
+          onChanged: (value) => homeController.filterQuotes(value),
+        ),
+        Expanded(child: Obx(() {
+          if (homeController.isLoading.value) {
+            return const Center(
+              child: CircularProgressIndicator(
+                color: AppColor.elementColor,
+              ),
+            );
+          }
+          return ListView.builder(
+              itemCount: homeController.filteredQuotes.length,
+              itemBuilder: (context, index) {
+                final quote = homeController.filteredQuotes[index];
+                return Card(
+                    color: AppColor.backgroundColor,
+                    elevation: 4.0,
+                    margin: const EdgeInsets.symmetric(
+                      vertical: 8.0,
+                      horizontal: 16.0,
                     ),
-                  );
-                }
-                return ListView.builder(
-                  itemCount: homeController.filteredQuotes.length,
-                  itemBuilder: (context, index) {
-                    final quote = homeController.filteredQuotes[index];
-                    return Card(
-                      color: AppColor.backgroundColor,
-                      elevation: 4.0,
-                      margin: const EdgeInsets.symmetric(
-                        vertical: 8.0,
-                        horizontal: 16.0,
-                      ),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15.0),
-                      ),
-                      child: Padding(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15.0),
+                    ),
+                    child: Padding(
                         padding: const EdgeInsets.all(16.0),
                         child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              quote['quote'],
-                              style: GoogleFonts.gupter(
-                                fontSize: 18.0,
-                                fontWeight: FontWeight.normal,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                quote['quote'],
+                                style: GoogleFonts.gupter(
+                                  fontSize: 18.0,
+                                  fontWeight: FontWeight.normal,
+                                ),
                               ),
-                            ),
-                            const SizedBox(height: 8.0),
-                            Text(
-                              "- ${quote['author']}",
-                              style: GoogleFonts.lora(
-                                fontSize: 16.0,
-                                fontStyle: FontStyle.italic,
-                                color: AppColor.elementColor,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    );
-                  },
-                );
-              },
-            ),
-          ),
-        ],
+                              const SizedBox(height: 8.0),
+                              Text("- ${quote['author']}",
+                                  style: GoogleFonts.lora(
+                                    fontSize: 16.0,
+                                    fontStyle: FontStyle.italic,
+                                    color: AppColor.elementColor,
+                                  ))
+                            ])));
+              });
+        }))
+      ]),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          homeController.fetchQuotes();
+        },
+        backgroundColor: AppColor.elementColor,
+        child: const Icon(Icons.refresh, color: Colors.white),
       ),
     );
   }

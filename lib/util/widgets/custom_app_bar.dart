@@ -56,7 +56,10 @@ class CustomAppBarWidget extends StatelessWidget {
                   icon: const CircleAvatar(
                     backgroundColor: AppColor.backgroundColor,
                     radius: 18,
-                    child: Icon(Icons.account_circle_outlined),
+                    child: Icon(
+                      Icons.account_circle_outlined,
+                      color: AppColor.elementColor,
+                    ),
                   ),
                   onPressed: () => Get.toNamed(Routes.profilePageRoute),
                 ),
